@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI for Lawyers — Course Overview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,900;1,9..144,400;1,9..144,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F1E6;
+    --paper-2:#EFE7D7;
+    --paper-3:#EAE0CD;
+    --ink:#221C15;
+    --ink-soft:#544A3D;
+    --ink-faint:#7C6F5D;
+    --oxblood:#7B2C24;
+    --oxblood-deep:#5C201A;
+    --brass:#A6873F;
+    --brass-soft:rgba(166,135,63,.32);
+    --hair:rgba(34,28,21,.14);
+    --display:'Fraunces',Georgia,'Times New Roman',serif;
+    --body:'Newsreader',Georgia,serif;
+    --maxw:850px;
+  }
+
+  *{box-sizing:border-box;}
+  html{ -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:19px;
+    line-height:1.62;
+    font-weight:400;
+    /* faint paper grain */
+    background-image:
+      radial-gradient(circle at 18% 12%, rgba(166,135,63,.06), transparent 45%),
+      radial-gradient(circle at 86% 88%, rgba(123,44,36,.05), transparent 50%);
+    background-attachment:fixed;
+  }
+
+  .sheet{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 40px 120px;
+  }
+
+  /* ---------- shared type ---------- */
+  .eyebrow{
+    font-family:var(--display);
+    font-weight:500;
+    font-size:.72rem;
+    letter-spacing:.32em;
+    text-transform:uppercase;
+    color:var(--oxblood);
+  }
+  h1,h2,h3,h4{ font-family:var(--display); font-weight:600; color:var(--ink); margin:0; }
+  p{ margin:0 0 1.1em; }
+  a{ color:var(--oxblood); }
+
+  /* ---------- masthead ---------- */
+  .masthead{
+    padding:96px 0 0;
+    border-top:3px solid var(--ink);
+    margin-top:34px;
+    position:relative;
+  }
+  .masthead .kicker{
+    display:flex; align-items:center; gap:16px; margin-bottom:30px;
+  }
+  .kicker .rule{ height:1px; flex:1; background:var(--hair); }
+
+  h1.title{
+    font-weight:900;
+    font-size:clamp(3.4rem,9vw,6.2rem);
+    line-height:.92;
+    letter-spacing:-.02em;
+    margin:0 0 4px;
+  }
+  h1.title .amp{ color:var(--oxblood); font-style:italic; font-weight:500; }
+  .dek{
+    font-family:var(--body);
+    font-style:italic;
+    font-size:1.45rem;
+    line-height:1.4;
+    color:var(--ink-soft);
+    max-width:34ch;
+    margin:22px 0 36px;
+  }
+  .byline{
+    display:flex; flex-wrap:wrap; gap:8px 26px;
+    padding-top:24px;
+    border-top:1px solid var(--hair);
+    font-size:.95rem;
+    color:var(--ink-soft);
+  }
+  .byline b{ color:var(--ink); font-weight:600; }
+  .byline .who{ display:flex; flex-direction:column; }
+  .byline .role{ font-size:.74rem; letter-spacing:.14em; text-transform:uppercase; color:var(--brass); font-family:var(--display); }
+
+  /* ---------- framing note ---------- */
+  .note{
+    margin:54px 0 10px;
+    background:var(--paper-2);
+    border:1px solid var(--hair);
+    border-left:4px solid var(--oxblood);
+    padding:30px 34px;
+    border-radius:2px;
+    box-shadow:0 1px 0 rgba(255,255,255,.6) inset, 0 18px 40px -30px rgba(34,28,21,.5);
+  }
+  .note .label{
+    font-family:var(--display); text-transform:uppercase; letter-spacing:.2em;
+    font-size:.7rem; color:var(--oxblood); margin-bottom:10px;
+  }
+  .note p{ margin:0; font-size:1.06rem; }
+  .note p+p{ margin-top:.8em; }
+  .dropcap::first-letter{
+    font-family:var(--display); font-weight:900; float:left;
+    font-size:3.5em; line-height:.74; padding:.06em .12em 0 0; color:var(--oxblood);
+  }
+
+  /* ---------- section ---------- */
+  section{ margin-top:84px; }
+  .sec-head{
+    display:flex; align-items:baseline; gap:20px;
+    border-bottom:2px solid var(--ink);
+    padding-bottom:14px; margin-bottom:8px;
+  }
+  .sec-num{
+    font-family:var(--display); font-weight:900;
+    font-size:1.05rem; color:var(--oxblood);
+    letter-spacing:.05em; flex-shrink:0;
+    padding-top:.35em;
+  }
+  .sec-head h2{ font-size:clamp(1.9rem,4.4vw,2.7rem); line-height:1.02; letter-spacing:-.015em; flex:1; }
+  .sec-head .owner{
+    font-family:var(--display); font-style:italic; font-weight:400;
+    color:var(--ink-faint); font-size:1rem; white-space:nowrap; padding-top:.5em;
+  }
+  .sec-intro{ font-size:1.08rem; color:var(--ink-soft); max-width:62ch; margin:20px 0 6px; }
+  .sec-intro em{ color:var(--ink); }
+
+  /* ---------- clusters & topics ---------- */
+  .cluster{ margin-top:42px; }
+  .cluster-title{
+    font-family:var(--display); font-weight:600; font-size:1.16rem;
+    color:var(--oxblood-deep); display:flex; align-items:center; gap:14px;
+    margin-bottom:6px; letter-spacing:.005em;
+  }
+  .cluster-title::before{
+    content:""; width:9px; height:9px; background:var(--brass);
+    transform:rotate(45deg); flex-shrink:0;
+  }
+  .cluster-title::after{ content:""; flex:1; height:1px; background:var(--brass-soft); }
+
+  dl.topics{ margin:14px 0 0; }
+  .topic{
+    padding:15px 0 16px 26px;
+    border-bottom:1px solid var(--hair);
+    position:relative;
+  }
+  .topic:last-child{ border-bottom:none; }
+  .topic::before{
+    content:""; position:absolute; left:2px; top:24px;
+    width:6px; height:6px; border-radius:50%; background:var(--oxblood);
+  }
+  .topic dt{
+    font-family:var(--display); font-weight:600; font-size:1.12rem;
+    color:var(--ink); margin-bottom:3px;
+  }
+  .topic dd{ margin:0; font-size:1.01rem; color:var(--ink-soft); line-height:1.5; }
+  .topic dd .touch{ color:var(--oxblood); font-style:italic; }
+
+  /* ---------- skills: blocks ---------- */
+  .block{
+    margin-top:34px;
+    background:var(--paper-2);
+    border:1px solid var(--hair);
+    border-radius:3px;
+    overflow:hidden;
+  }
+  .block-head{
+    display:flex; align-items:center; gap:18px;
+    padding:20px 28px;
+    background:linear-gradient(180deg, var(--paper-3), var(--paper-2));
+    border-bottom:1px solid var(--hair);
+  }
+  .block-tag{
+    font-family:var(--display); font-weight:900; font-size:.78rem;
+    letter-spacing:.16em; text-transform:uppercase; color:#fff;
+    background:var(--oxblood); padding:6px 12px; border-radius:2px; white-space:nowrap;
+  }
+  .block-head h3{ font-size:1.4rem; line-height:1.05; }
+  .block-head .sub{ font-family:var(--body); font-style:italic; color:var(--ink-faint); font-size:.96rem; display:block; margin-top:2px; }
+  .block-body{ padding:8px 28px 12px; }
+  .block-body .topic{ padding-left:26px; }
+
+  .cap-callout{
+    text-align:center; padding:30px 28px;
+    font-family:var(--display); font-style:italic; color:var(--ink-soft); font-size:1.08rem;
+  }
+  .cap-callout b{ font-style:normal; font-weight:600; color:var(--oxblood); }
+
+  /* ---------- capstone feature ---------- */
+  .capstone{
+    margin-top:40px;
+    background:var(--ink);
+    color:var(--paper);
+    border-radius:4px;
+    padding:46px 44px 40px;
+    position:relative; overflow:hidden;
+    box-shadow:0 30px 60px -40px rgba(34,28,21,.9);
+  }
+  .capstone::before{
+    content:""; position:absolute; inset:0;
+    background:radial-gradient(circle at 88% -10%, rgba(166,135,63,.18), transparent 45%),
+               radial-gradient(circle at -5% 110%, rgba(123,44,36,.4), transparent 48%);
+    pointer-events:none;
+  }
+  .capstone > *{ position:relative; }
+  .capstone .eyebrow{ color:var(--brass); }
+  .capstone h3{ color:var(--paper); font-size:1.9rem; margin:12px 0 8px; letter-spacing:-.01em; }
+  .capstone p{ color:rgba(246,241,230,.82); max-width:60ch; font-size:1.04rem; }
+  .capstone p b{ color:#fff; font-weight:600; }
+
+  .flow{
+    display:flex; flex-wrap:wrap; gap:10px; align-items:center;
+    margin:26px 0 30px;
+  }
+  .flow .step{
+    font-family:var(--display); font-weight:600; font-size:.96rem;
+    color:var(--paper); padding:8px 16px;
+    border:1px solid rgba(166,135,63,.4); border-radius:30px;
+    background:rgba(246,241,230,.04);
+  }
+  .flow .arr{ color:var(--brass); font-size:1.1rem; }
+
+  .duties{ border-top:1px solid rgba(246,241,230,.16); padding-top:24px; margin-top:6px; }
+  .duties .lead{ font-family:var(--display); font-style:italic; color:var(--brass); font-size:1.02rem; margin-bottom:16px; }
+  .duty-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:10px 28px; }
+  .duty{ display:flex; gap:12px; align-items:baseline; font-size:.97rem; color:rgba(246,241,230,.86); }
+  .duty .rule-no{ font-family:var(--display); font-weight:700; color:var(--brass); font-size:.82rem; white-space:nowrap; min-width:74px; }
+
+  /* ---------- discussion points ---------- */
+  .talk{ margin-top:36px; counter-reset:talk; }
+  .point{
+    display:grid; grid-template-columns:auto 1fr; gap:24px;
+    padding:24px 0; border-bottom:1px solid var(--hair);
+  }
+  .point:last-child{ border-bottom:none; }
+  .point .n{
+    font-family:var(--display); font-weight:900; font-size:2rem;
+    color:var(--brass); line-height:1; counter-increment:talk;
+  }
+  .point .n::before{ content:counter(talk,decimal-leading-zero); }
+  .point h4{ font-size:1.18rem; margin-bottom:5px; }
+  .point p{ margin:0; color:var(--ink-soft); font-size:1.01rem; }
+
+  /* ---------- colophon ---------- */
+  .colophon{
+    margin-top:80px; padding-top:24px; border-top:3px solid var(--ink);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px;
+    font-family:var(--display); font-size:.82rem; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--ink-faint);
+  }
+  .colophon .anchor{ color:var(--oxblood); }
+
+  /* ---------- entrance motion ---------- */
+  @keyframes rise{ from{opacity:0; transform:translateY(16px);} to{opacity:1; transform:none;} }
+  .reveal{ opacity:0; animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards; }
+  .masthead{ animation:rise 1s cubic-bezier(.2,.7,.2,1) forwards; }
+  .d1{animation-delay:.08s}.d2{animation-delay:.18s}.d3{animation-delay:.3s}
+  .d4{animation-delay:.42s}.d5{animation-delay:.54s}.d6{animation-delay:.66s}
+  @media (prefers-reduced-motion:reduce){ .reveal,.masthead{ animation:none; opacity:1; } }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:620px){
+    body{ font-size:18px; }
+    .sheet{ padding:0 22px 80px; }
+    .sec-head{ flex-wrap:wrap; gap:6px 16px; }
+    .sec-head .owner{ width:100%; padding-top:0; }
+    .duty-grid{ grid-template-columns:1fr; }
+    .block-head{ flex-direction:column; align-items:flex-start; gap:12px; }
+    .point{ grid-template-columns:1fr; gap:6px; }
+    .point .n{ font-size:1.5rem; }
+  }
+
+  /* ---------- print ---------- */
+  @media print{
+    body{ background:#fff; font-size:11.5pt; }
+    .sheet{ max-width:none; padding:0; }
+    .reveal,.masthead{ animation:none; opacity:1; }
+    section{ break-inside:avoid; margin-top:30px; }
+    .capstone{ background:#fff; color:#000; box-shadow:none; border:1.5px solid #000; }
+    .capstone p,.capstone .duty{ color:#000; }
+    .capstone .step{ color:#000; }
+    .block,.note{ box-shadow:none; }
+    .masthead{ border-top:2px solid #000; padding-top:20px; }
+  }
+
+  /* ======================= FEEDBACK LAYER ======================= */
+  .fb-btn{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:23px; height:23px; margin-left:10px; vertical-align:middle; padding:0;
+    border:1px solid var(--brass); border-radius:50%;
+    background:transparent; color:var(--oxblood); cursor:pointer;
+    font-family:var(--body); font-size:.74rem; line-height:1;
+    transition:background .18s,color .18s,border-color .18s,transform .18s;
+  }
+  .fb-btn:hover{ background:var(--oxblood); color:#fff; border-color:var(--oxblood); transform:translateY(-1px); }
+  .fb-btn.has{ background:var(--oxblood); color:#fff; border-color:var(--oxblood); }
+  .capstone .fb-btn{ border-color:var(--brass); color:var(--brass); }
+  .capstone .fb-btn:hover,.capstone .fb-btn.has{ background:var(--brass); color:var(--ink); border-color:var(--brass); }
+
+  .fb-slot{ margin:0; }
+  .fb-editor{ margin:14px 0 18px; background:var(--paper-2); border:1px solid var(--hair); border-left:3px solid var(--brass); border-radius:3px; padding:14px 16px; animation:rise .4s ease; }
+  .fb-editor textarea{ width:100%; border:1px solid var(--hair); background:var(--paper); color:var(--ink); font-family:var(--body); font-size:1rem; line-height:1.5; padding:10px 12px; border-radius:2px; resize:vertical; min-height:74px; outline:none; }
+  .fb-editor textarea:focus{ border-color:var(--oxblood); }
+  .fb-actions{ display:flex; gap:8px; margin-top:10px; align-items:center; }
+  .fb-mini{ font-family:var(--display); font-size:.66rem; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin-right:auto; }
+  .fb-do{ font-family:var(--display); font-weight:600; font-size:.82rem; letter-spacing:.04em; border:1px solid var(--oxblood); background:var(--oxblood); color:#fff; padding:7px 14px; border-radius:2px; cursor:pointer; transition:opacity .15s; }
+  .fb-do:hover{ opacity:.85; }
+  .fb-do.ghost{ background:transparent; color:var(--oxblood); }
+  .fb-do.ghost:hover{ background:rgba(123,44,36,.08); opacity:1; }
+
+  .fb-note{ margin:14px 0 18px; background:var(--paper-2); border-left:3px solid var(--oxblood); border-radius:0 3px 3px 0; padding:12px 16px; }
+  .fb-note-label{ font-family:var(--display); font-size:.64rem; letter-spacing:.18em; text-transform:uppercase; color:var(--oxblood); margin-bottom:4px; display:flex; justify-content:space-between; align-items:center; }
+  .fb-note-text{ font-style:italic; color:var(--ink); font-size:1rem; line-height:1.5; white-space:pre-wrap; }
+  .fb-edit-link{ font-family:var(--display); letter-spacing:.1em; font-size:.62rem; color:var(--ink-faint); cursor:pointer; text-transform:uppercase; }
+  .fb-edit-link:hover{ color:var(--oxblood); }
+
+  .fb-panel{ position:fixed; right:22px; bottom:22px; z-index:50; font-family:var(--body); }
+  .fb-tab{ display:flex; align-items:center; gap:9px; background:var(--ink); color:var(--paper); border:1px solid var(--brass); border-radius:30px; padding:11px 18px; cursor:pointer; box-shadow:0 14px 30px -16px rgba(34,28,21,.8); font-family:var(--display); font-weight:600; font-size:.9rem; letter-spacing:.02em; transition:transform .18s; }
+  .fb-tab:hover{ transform:translateY(-2px); }
+  .fb-count{ background:var(--oxblood); color:#fff; border-radius:20px; min-width:22px; height:22px; display:inline-flex; align-items:center; justify-content:center; font-size:.76rem; padding:0 6px; }
+  .fb-pen{ color:var(--brass); font-size:1rem; }
+
+  .fb-card{ position:absolute; right:0; bottom:60px; width:min(360px,calc(100vw - 44px)); background:var(--paper); border:1px solid var(--hair); border-top:3px solid var(--oxblood); border-radius:4px; box-shadow:0 30px 60px -28px rgba(34,28,21,.7); padding:20px; display:none; }
+  .fb-card.open{ display:block; animation:rise .35s ease; }
+  .fb-card h5{ font-family:var(--display); font-weight:600; font-size:1.15rem; margin:0 0 3px; color:var(--ink); }
+  .fb-sub{ font-size:.86rem; color:var(--ink-faint); margin:0 0 14px; font-style:italic; }
+  .fb-name{ width:100%; border:1px solid var(--hair); background:var(--paper-2); font-family:var(--body); font-size:.92rem; padding:8px 10px; border-radius:2px; margin-bottom:14px; outline:none; color:var(--ink); }
+  .fb-name:focus{ border-color:var(--oxblood); }
+  .fb-list{ list-style:none; margin:0 0 16px; padding:0; max-height:230px; overflow:auto; }
+  .fb-list li{ padding:9px 0; border-bottom:1px solid var(--hair); cursor:pointer; }
+  .fb-list li:last-child{ border-bottom:none; }
+  .fb-list li:hover .fb-li-label{ color:var(--oxblood); }
+  .fb-li-label{ font-family:var(--display); font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:2px; }
+  .fb-li-text{ font-size:.9rem; color:var(--ink-soft); font-style:italic; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .fb-empty{ font-style:italic; color:var(--ink-faint); font-size:.9rem; cursor:default !important; }
+  .fb-foot{ display:flex; flex-wrap:wrap; gap:8px; }
+  .fb-foot .fb-do{ flex:1; text-align:center; white-space:nowrap; }
+  .fb-clear{ display:block; width:100%; text-align:center; margin-top:10px; background:none; border:none; color:var(--ink-faint); font-family:var(--display); font-size:.64rem; letter-spacing:.14em; text-transform:uppercase; cursor:pointer; }
+  .fb-clear:hover{ color:var(--oxblood); }
+  .fb-close{ position:absolute; top:12px; right:14px; background:none; border:none; font-size:1.2rem; color:var(--ink-faint); cursor:pointer; line-height:1; }
+
+  .fb-toast{ position:fixed; right:22px; bottom:74px; z-index:49; max-width:282px; background:var(--paper); border:1px solid var(--hair); border-left:3px solid var(--brass); border-radius:3px; padding:13px 34px 13px 15px; box-shadow:0 18px 40px -24px rgba(34,28,21,.6); font-size:.9rem; color:var(--ink-soft); line-height:1.45; animation:rise .5s ease; }
+  .fb-toast b{ color:var(--oxblood); font-weight:600; }
+  .fb-toast-x{ position:absolute; top:7px; right:10px; background:none; border:none; color:var(--ink-faint); cursor:pointer; font-size:1rem; }
+
+  .fb-flash{ animation:flash 1.5s ease; }
+  @keyframes flash{ 0%,100%{ background:transparent; } 25%{ background:rgba(166,135,63,.22); } }
+
+  @media print{
+    .fb-btn,.fb-panel,.fb-toast,.fb-editor{ display:none !important; }
+    .fb-note{ border-left:2px solid #000; }
+    .fb-edit-link{ display:none; }
+  }
+  @media (max-width:620px){ .fb-panel{ right:12px; bottom:12px; } .fb-toast{ right:12px; } }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <!-- ======================= MASTHEAD ======================= -->
+  <header class="masthead">
+    <div class="kicker">
+      <span class="eyebrow">Proposed J.D. Elective &middot; IU McKinney School of Law</span>
+      <span class="rule"></span>
+    </div>
+
+    <h1 class="title">AI&nbsp;for<br>Lawyers</h1>
+
+    <p class="dek">The applied counterpart to the doctrine&mdash;teaching students to <em>practice law with AI</em>, under its constraints.</p>
+
+    <div class="byline">
+      <span class="who"><span class="role">Doctrine</span><b>Nick Merker</b></span>
+      <span class="who"><span class="role">Skills</span><b>Noah Yoder</b></span>
+      <span class="who"><span class="role">Ethical Anchor</span><b>ABA Formal Op. 512</b></span>
+      <span class="who"><span class="role">Format</span><b>~90 min doctrine + ~60 min lab, weekly</b></span>
+    </div>
+  </header>
+
+  <!-- ======================= FRAMING NOTE ======================= -->
+  <div class="note reveal d1">
+    <div class="label">What this is</div>
+    <p class="dropcap">An example set of the high-level topics we'd cover&mdash;a starting point for our conversation, not a syllabus. Two interleaved arcs, the <b>doctrine</b> and the hands-on <b>skills</b>, themed to each other week by week, with a semester-long <b>capstone</b> that ties them together. Everything below is meant to be argued with.</p>
+    <p>The design principle on the skills side: teach each capability concretely on one tool so it's actually learnable, but name the transferable skill every time&mdash;so what students learn survives whichever platform they end up using in practice.</p>
+  </div>
+
+  <!-- ======================= I. DOCTRINE ======================= -->
+  <section class="reveal d2">
+    <div class="sec-head">
+      <span class="sec-num">I</span>
+      <h2>The Doctrine Arc</h2>
+      <span class="owner">Nick&rsquo;s half</span>
+    </div>
+    <p class="sec-intro">Less a survey of everything, more a working understanding of <em>how AI is actually governed</em> and where that lands in the areas a graduate will practice. The two existing McKinney AI electives teach the law <em>about</em> AI; this half teaches only the doctrine a practitioner needs to make defensible decisions.</p>
+
+    <div class="cluster">
+      <h4 class="cluster-title">Foundations</h4>
+      <dl class="topics">
+        <div class="topic"><dt>What AI actually is</dt><dd>A working technical mental model for lawyers&mdash;approachable from either the technical or the practice-impact direction, by either instructor.</dd></div>
+      </dl>
+    </div>
+
+    <div class="cluster">
+      <h4 class="cluster-title">How AI is actually governed</h4>
+      <dl class="topics">
+        <div class="topic"><dt>The US regulatory reality</dt><dd>Why there&rsquo;s no single AI statute&mdash;and how the government actually regulates: <b>export controls</b> on advanced compute and model weights as the primary federal lever, alongside the state-law patchwork and agency action.</dd></div>
+        <div class="topic"><dt>The EU AI Act &amp; international comparators</dt><dd>The contrast case&mdash;what comprehensive, risk-tiered regulation looks like, and what it asks of the businesses our students will advise.</dd></div>
+        <div class="topic"><dt>Data governance &amp; privacy</dt><dd>GDPR, the US state laws, biometrics. The deepest well in the course, because data governance touches every practice area an attorney might enter.</dd></div>
+      </dl>
+    </div>
+
+    <div class="cluster">
+      <h4 class="cluster-title">AI where you practice</h4>
+      <dl class="topics">
+        <div class="topic"><dt>Sector-specific regulation</dt><dd>Healthcare, financial services, employment&mdash;where AI use meets regimes a lawyer already has to know.</dd></div>
+        <div class="topic"><dt>IP &amp; copyright</dt><dd>Ownership, training-data provenance, and infringement exposure.</dd></div>
+        <div class="topic"><dt>Contracting around AI</dt><dd>Vendor agreements, AI clauses, indemnities, and the allocation of risk when the tool is someone else&rsquo;s.</dd></div>
+      </dl>
+    </div>
+
+    <div class="cluster">
+      <h4 class="cluster-title">When AI goes wrong</h4>
+      <dl class="topics">
+        <div class="topic"><dt>Liability &amp; responsibility</dt><dd>Who is on the hook when AI gets it wrong&mdash;including the bad-actor and misuse dimension, the less-than-honest and less-than-careful user.</dd></div>
+        <div class="topic"><dt>Litigation &amp; evidence</dt><dd>Deepfakes, AI-generated filings, and the growing line of sanctions.</dd></div>
+        <div class="topic"><dt>Touch points</dt><dd><span class="touch">Algorithmic bias &amp; discrimination, and criminal-justice uses</span>&mdash;surfaced as facets of the liability conversation rather than standalone units. This is an AI course, not a civil-rights course.</dd></div>
+      </dl>
+    </div>
+
+    <div class="cluster">
+      <h4 class="cluster-title">The ethics spine &mdash; runs under everything</h4>
+      <dl class="topics">
+        <div class="topic"><dt>Professional responsibility</dt><dd>ABA Formal Opinion 512 and the duties it names, plus the fast-moving layer beneath it&mdash;state-bar guidance and court standing orders&mdash;taught as the model for how a graduate stays current in their own jurisdiction.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ======================= II. SKILLS ======================= -->
+  <section class="reveal d3">
+    <div class="sec-head">
+      <span class="sec-num">II</span>
+      <h2>The Skills Arc</h2>
+      <span class="owner">Noah&rsquo;s half</span>
+    </div>
+    <p class="sec-intro">Organized by <em>capability</em>, not by use case&mdash;students learn to operate the instrument deeply, and the legal tasks become the vehicle. Taught concretely on Claude, assuming students carry at least a Claude Pro subscription, with every capability named as a transferable skill.</p>
+
+    <div class="block">
+      <div class="block-head">
+        <span class="block-tag">Block 1</span>
+        <div><h3>The basics</h3><span class="sub">Roughly the first month &mdash; learn the instrument</span></div>
+      </div>
+      <div class="block-body">
+        <dl class="topics">
+          <div class="topic"><dt>Mental model &amp; failure modes</dt><dd>What the model is, how it behaves, and why it fails&mdash;hallucination, sycophancy, confident wrongness&mdash;produced on purpose so students recognize them.</dd></div>
+          <div class="topic"><dt>Prompting</dt><dd>The core craft of getting useful, reliable output.</dd></div>
+          <div class="topic"><dt>Verification</dt><dd><em>Never cite what you haven&rsquo;t read.</em> Taught early, because it&rsquo;s the safety habit underneath every later capability.</dd></div>
+          <div class="topic"><dt>Data &amp; confidentiality</dt><dd>Where your inputs go, and what client information may touch which tool.</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-head">
+        <span class="block-tag">Block 2</span>
+        <div><h3>Core functionality</h3><span class="sub">The working surfaces of the tool</span></div>
+      </div>
+      <div class="block-body">
+        <dl class="topics">
+          <div class="topic"><dt>Conversation, done well</dt><dd>The baseline most users never get past.</dd></div>
+          <div class="topic"><dt>Projects</dt><dd>Persistent context and a curated knowledge base. <span class="touch">Like a matter file the assistant always has open.</span></dd></div>
+          <div class="topic"><dt>Skills</dt><dd>Packaged, reusable instructions. <span class="touch">A firm&rsquo;s templates, checklists, and playbooks&mdash;made runnable.</span></dd></div>
+          <div class="topic"><dt>Artifacts</dt><dd>Generating and iterating real work product&mdash;a memo, a clause library, a timeline&mdash;in a live, editable space.</dd></div>
+          <div class="topic"><dt>Documents &amp; grounded research</dt><dd>Working over real files, with retrieval and sources&mdash;and an honest look at why grounded tools still hallucinate.</dd></div>
+          <div class="topic"><dt>Claude Code</dt><dd>The agentic, file-aware frontier. The most advanced capability in the course&mdash;and arguably the one that gives a graduate the most leverage no one else in the room will have.</dd></div>
+        </dl>
+      </div>
+      <div class="cap-callout">Block 3 is the capstone &mdash; <b>where the pieces come together &darr;</b></div>
+    </div>
+  </section>
+
+  <!-- ======================= III. CAPSTONE ======================= -->
+  <section class="reveal d4">
+    <div class="sec-head">
+      <span class="sec-num">III</span>
+      <h2>The Capstone</h2>
+      <span class="owner">Block 3 &middot; the spine</span>
+    </div>
+    <p class="sec-intro">Everything before this taught a capability in isolation. The capstone is the only place students learn <em>orchestration</em>&mdash;composing those capabilities into a workflow that does real legal work end to end, then defending it like a practitioner.</p>
+
+    <div class="capstone">
+      <span class="eyebrow">A defended workflow</span>
+      <h3>Build it, break it, defend it.</h3>
+      <p>Each student designs an AI-assisted legal workflow for a real scenario, composes it from the full toolkit&mdash;<b>a Project, a Skill, real documents, verification gates, and, where it fits, Claude Code</b>&mdash;then stress-tests it against adversarial cases and defends every design choice.</p>
+
+      <div class="flow">
+        <span class="step">Scope</span><span class="arr">&rarr;</span>
+        <span class="step">Compose</span><span class="arr">&rarr;</span>
+        <span class="step">Orchestrate</span><span class="arr">&rarr;</span>
+        <span class="step">Stress-test</span><span class="arr">&rarr;</span>
+        <span class="step">Defend</span><span class="arr">&rarr;</span>
+        <span class="step">Reflect</span>
+      </div>
+
+      <p style="margin-bottom:0"><b>The deliverable:</b> a working workflow, a memo defending the design, and a live oral defense with Q&amp;A. The student who finds where their own workflow breaks scores higher than the one whose demo went smoothly&mdash;<em>a test that fails is a good result.</em></p>
+
+      <div class="duties">
+        <div class="lead">Because one workflow touches every duty, the capstone is where the whole ethics spine converges:</div>
+        <div class="duty-grid">
+          <div class="duty"><span class="rule-no">Rule 1.1</span><span>Competence &mdash; why this workflow, why these tools</span></div>
+          <div class="duty"><span class="rule-no">Rule 1.6</span><span>Confidentiality &mdash; what data touched what, and how</span></div>
+          <div class="duty"><span class="rule-no">Rule 1.4</span><span>Communication &mdash; what the client is told about the AI use</span></div>
+          <div class="duty"><span class="rule-no">Rule 5.1/5.3</span><span>Supervision &mdash; the checkpoints and human sign-off</span></div>
+          <div class="duty"><span class="rule-no">Rule 3.3</span><span>Candor &mdash; the verification gates</span></div>
+          <div class="duty"><span class="rule-no">Rule 1.5</span><span>Fees &mdash; how AI efficiency shows up in a bill, honestly</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= IV. DISCUSSION ======================= -->
+  <section class="reveal d5">
+    <div class="sec-head">
+      <span class="sec-num">IV</span>
+      <h2>For Our Conversation</h2>
+      <span class="owner">where I want your read</span>
+    </div>
+    <p class="sec-intro">The shape above is mine to argue, not to impose. A handful of genuine forks where your judgment&mdash;and the faculty&rsquo;s&mdash;should drive:</p>
+
+    <div class="talk">
+      <div class="point"><span class="n"></span><div>
+        <h4>The doctrine shape</h4>
+        <p>Does the &ldquo;touch points&rdquo; framing land&mdash;liability as the through-line, with bias and criminal justice as facets rather than their own weeks? And does leading the US story with <em>export controls</em> match how you&rsquo;d teach the regulatory landscape?</p>
+      </div></div>
+      <div class="point"><span class="n"></span><div>
+        <h4>Who teaches what</h4>
+        <p>Your wheelhouse covers regulation, privacy, contracting, and litigation cleanly. IP/copyright, liability/tort, and the bias touch points need a plan&mdash;you stretch, a guest lecturer, or a faculty co-instructor. Worth naming owners early.</p>
+      </div></div>
+      <div class="point"><span class="n"></span><div>
+        <h4>Student tooling</h4>
+        <p>The skills half assumes students carry at least Claude Pro (~$20/mo) as a baseline&mdash;that&rsquo;s what makes Projects, Skills, and Claude Code teachable hands-on. The one open question is the enterprise tier (a real document-management system, connectors), which depends on what the school is willing to fund.</p>
+      </div></div>
+      <div class="point"><span class="n"></span><div>
+        <h4>The capstone as the graded spine</h4>
+        <p>A built workflow plus a defense memo plus a live oral defense. Does that satisfy the school&rsquo;s expectations for a 3-credit graded deliverable, or do we pair it with something more traditional?</p>
+      </div></div>
+      <div class="point"><span class="n"></span><div>
+        <h4>Positioning &amp; the pilot</h4>
+        <p>Confirming this lands as a third, differentiated <em>applied</em> elective alongside the two doctrinal ones&mdash;the bifurcated weekly format, and a Fall 2026 pilot before a permanent catalog listing.</p>
+      </div></div>
+    </div>
+  </section>
+
+  <div class="colophon reveal d6">
+    <span>AI for Lawyers &middot; Discussion Draft</span>
+    <span class="anchor">Anchored in ABA Formal Opinion 512</span>
+    <span>Prepared by Noah Yoder &middot; June 2026</span>
+  </div>
+
+</div>
+<script>
+(function(){
+  "use strict";
+  var KEY='aifl-overview-feedback-v1';
+  var HINT='aifl-hint-dismissed-v1';
+  var MAIL='noah.yoder@lilly.com';
+  var state={name:'',comments:{}};
+  var targets=[], elById={}, editing={};
+  var card,listEl,countEl,nameEl;
+
+  try{ var raw=localStorage.getItem(KEY); if(raw){ var p=JSON.parse(raw); if(p){ state.name=p.name||''; state.comments=p.comments||{}; } } }catch(e){}
+
+  function save(){ try{ localStorage.setItem(KEY,JSON.stringify(state)); }catch(e){} }
+  function slug(s){ return s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'').slice(0,46); }
+
+  function buildTargets(){
+    var t=[], seen={};
+    function add(el,label,host){ if(!el) return; var id=slug(label); while(seen[id]) id+='-x'; seen[id]=1; t.push({id:id,el:el,label:label,host:host||el}); }
+    add(document.querySelector('.note .label'),'Framing note',document.querySelector('.note'));
+    document.querySelectorAll('section').forEach(function(sec){
+      var h2=sec.querySelector('.sec-head h2');
+      var base=h2?h2.textContent.trim():'Section';
+      add(h2,base+' — overall',sec.querySelector('.sec-head'));
+      sec.querySelectorAll('.cluster-title').forEach(function(ct){ add(ct,base+' · '+ct.textContent.trim(),ct); });
+      sec.querySelectorAll('.block-head h3').forEach(function(h3){ add(h3,base+' · '+h3.textContent.trim(),h3.closest('.block-head')); });
+      var cap=sec.querySelector('.capstone h3'); if(cap) add(cap,base+' · the workflow',cap);
+      sec.querySelectorAll('.point h4').forEach(function(h4){ add(h4,'Discussion · '+h4.textContent.trim(),h4.closest('.point')); });
+    });
+    return t;
+  }
+
+  function makeBtn(tg){
+    var b=document.createElement('button');
+    b.type='button'; b.className='fb-btn'+(state.comments[tg.id]?' has':''); b.innerHTML='&#9998;';
+    b.setAttribute('aria-label','Comment on '+tg.label); b.title='Leave a comment';
+    b.addEventListener('click',function(ev){ ev.preventDefault(); ev.stopPropagation(); openEditor(tg.id); });
+    tg.el.appendChild(b); tg.btn=b;
+    var slot=document.createElement('div'); slot.className='fb-slot';
+    if(tg.host.nextSibling) tg.host.parentNode.insertBefore(slot,tg.host.nextSibling);
+    else tg.host.parentNode.appendChild(slot);
+    tg.slot=slot; renderSlot(tg);
+  }
+
+  function renderSlot(tg){
+    var slot=tg.slot; if(!slot) return; slot.innerHTML='';
+    if(editing[tg.id]){
+      var ed=document.createElement('div'); ed.className='fb-editor';
+      var ta=document.createElement('textarea');
+      ta.value=(state.comments[tg.id]&&state.comments[tg.id].text)||'';
+      ta.placeholder='Your note on “'+tg.label+'”…';
+      ed.appendChild(ta);
+      var act=document.createElement('div'); act.className='fb-actions';
+      var mini=document.createElement('span'); mini.className='fb-mini'; mini.textContent=tg.label;
+      var sv=document.createElement('button'); sv.type='button'; sv.className='fb-do'; sv.textContent='Save';
+      var cx=document.createElement('button'); cx.type='button'; cx.className='fb-do ghost'; cx.textContent='Cancel';
+      sv.addEventListener('click',function(){ var v=ta.value.trim(); if(v) state.comments[tg.id]={label:tg.label,text:v}; else delete state.comments[tg.id]; editing[tg.id]=false; save(); updateBtn(tg); renderSlot(tg); renderPanel(); });
+      cx.addEventListener('click',function(){ editing[tg.id]=false; renderSlot(tg); });
+      act.appendChild(mini); act.appendChild(sv); act.appendChild(cx); ed.appendChild(act);
+      slot.appendChild(ed); setTimeout(function(){ ta.focus(); },20);
+    } else if(state.comments[tg.id]){
+      var nt=document.createElement('div'); nt.className='fb-note';
+      var lab=document.createElement('div'); lab.className='fb-note-label';
+      var ls=document.createElement('span'); ls.textContent='Note';
+      var ek=document.createElement('span'); ek.className='fb-edit-link'; ek.textContent='edit / remove';
+      ek.addEventListener('click',function(){ openEditor(tg.id); });
+      lab.appendChild(ls); lab.appendChild(ek);
+      var tx=document.createElement('div'); tx.className='fb-note-text'; tx.textContent=state.comments[tg.id].text;
+      nt.appendChild(lab); nt.appendChild(tx); slot.appendChild(nt);
+    }
+  }
+
+  function updateBtn(tg){ if(tg.btn) tg.btn.className='fb-btn'+(state.comments[tg.id]?' has':''); }
+  function openEditor(id){ editing[id]=true; if(elById[id]) renderSlot(elById[id]); }
+
+  function buildPanel(){
+    var panel=document.createElement('div'); panel.className='fb-panel';
+    var tab=document.createElement('button'); tab.type='button'; tab.className='fb-tab';
+    tab.innerHTML='<span class="fb-pen">&#9998;</span> Review <span class="fb-count">0</span>';
+    countEl=tab.querySelector('.fb-count');
+    card=document.createElement('div'); card.className='fb-card';
+    card.innerHTML='<button class="fb-close" type="button" aria-label="Close">&times;</button>'+
+      '<h5>Your review</h5><p class="fb-sub">Comments save in this browser as you go.</p>'+
+      '<input class="fb-name" type="text" placeholder="Your name (for the email)">'+
+      '<ul class="fb-list"></ul>'+
+      '<div class="fb-foot"><button class="fb-do" data-act="mail" type="button">Send to Noah</button>'+
+      '<button class="fb-do ghost" data-act="copy" type="button">Copy</button>'+
+      '<button class="fb-do ghost" data-act="dl" type="button">Download</button></div>'+
+      '<button class="fb-clear" data-act="clear" type="button">Clear all comments</button>';
+    listEl=card.querySelector('.fb-list');
+    nameEl=card.querySelector('.fb-name'); nameEl.value=state.name||'';
+    nameEl.addEventListener('input',function(){ state.name=nameEl.value; save(); });
+    tab.addEventListener('click',function(){ card.classList.toggle('open'); renderPanel(); });
+    card.querySelector('.fb-close').addEventListener('click',function(){ card.classList.remove('open'); });
+    card.querySelector('[data-act="mail"]').addEventListener('click',sendMail);
+    card.querySelector('[data-act="copy"]').addEventListener('click',function(){ copyAll(false); });
+    card.querySelector('[data-act="dl"]').addEventListener('click',downloadAll);
+    card.querySelector('[data-act="clear"]').addEventListener('click',clearAll);
+    panel.appendChild(card); panel.appendChild(tab); document.body.appendChild(panel); renderPanel();
+  }
+
+  function ordered(){ var out=[]; targets.forEach(function(tg){ if(state.comments[tg.id]) out.push({id:tg.id,label:tg.label,text:state.comments[tg.id].text}); }); return out; }
+
+  function renderPanel(){
+    var oc=ordered(); if(countEl) countEl.textContent=oc.length; if(!listEl) return;
+    listEl.innerHTML='';
+    if(!oc.length){ var e=document.createElement('li'); e.className='fb-empty'; e.textContent='No comments yet — click an ✎ beside any section.'; listEl.appendChild(e); return; }
+    oc.forEach(function(c){
+      var li=document.createElement('li');
+      var l=document.createElement('div'); l.className='fb-li-label'; l.textContent=c.label;
+      var x=document.createElement('div'); x.className='fb-li-text'; x.textContent=c.text;
+      li.appendChild(l); li.appendChild(x);
+      li.addEventListener('click',function(){ goTo(c.id); });
+      listEl.appendChild(li);
+    });
+  }
+
+  function goTo(id){ var tg=elById[id]; if(!tg) return; if(card) card.classList.remove('open'); tg.host.scrollIntoView({behavior:'smooth',block:'center'}); tg.host.classList.add('fb-flash'); setTimeout(function(){ tg.host.classList.remove('fb-flash'); },1500); }
+
+  function digest(){
+    var oc=ordered(); var who=(state.name||'').trim()||'Nick';
+    var lines=['Feedback — AI for Lawyers (course overview)','From: '+who,'',Array(41).join('='),''];
+    oc.forEach(function(c,i){ lines.push((i+1)+'. ['+c.label+']'); lines.push(c.text); lines.push(''); });
+    return lines.join('\n');
+  }
+
+  function sendMail(){
+    var oc=ordered(); if(!oc.length){ alert('No comments yet — add a note first.'); return; }
+    var href='mailto:'+MAIL+'?subject='+encodeURIComponent('Feedback — AI for Lawyers overview'+(state.name?(' ('+state.name+')'):''))+'&body='+encodeURIComponent(digest());
+    if(href.length>1900){ copyAll(true); alert('Your feedback was a bit long to pre-fill an email, so it was copied to your clipboard. Paste it into a message to Noah ('+MAIL+').'); return; }
+    window.location.href=href;
+  }
+  function copyAll(silent){
+    var txt=digest();
+    if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(function(){ if(!silent) toast('Copied — paste it to Noah.'); },function(){ fallbackCopy(txt,silent); }); }
+    else fallbackCopy(txt,silent);
+  }
+  function fallbackCopy(txt,silent){ var ta=document.createElement('textarea'); ta.value=txt; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); }catch(e){} document.body.removeChild(ta); if(!silent) toast('Copied — paste it to Noah.'); }
+  function downloadAll(){ var oc=ordered(); if(!oc.length){ alert('No comments yet.'); return; } var b=new Blob([digest()],{type:'text/markdown'}); var a=document.createElement('a'); a.href=URL.createObjectURL(b); a.download='ai-for-lawyers-feedback.md'; document.body.appendChild(a); a.click(); document.body.removeChild(a); setTimeout(function(){ URL.revokeObjectURL(a.href); },1000); }
+  function clearAll(){ if(!Object.keys(state.comments).length) return; if(!confirm('Delete all comments? This cannot be undone.')) return; state.comments={}; save(); targets.forEach(function(tg){ editing[tg.id]=false; updateBtn(tg); renderSlot(tg); }); renderPanel(); }
+
+  function toast(msg){ var t=document.createElement('div'); t.className='fb-toast'; t.innerHTML=msg; document.body.appendChild(t); setTimeout(function(){ t.style.transition='opacity .4s'; t.style.opacity='0'; setTimeout(function(){ t.remove(); },420); },2200); }
+
+  function maybeHint(){
+    try{ if(localStorage.getItem(HINT)) return; }catch(e){}
+    var t=document.createElement('div'); t.className='fb-toast';
+    t.innerHTML='<button class="fb-toast-x" type="button" aria-label="Dismiss">&times;</button>Spot something? Click the <b>&#9998;</b> beside any section to leave a note — then hit <b>Send to Noah</b> when you’re done.';
+    document.body.appendChild(t);
+    t.querySelector('.fb-toast-x').addEventListener('click',function(){ try{ localStorage.setItem(HINT,'1'); }catch(e){} t.remove(); });
+    setTimeout(function(){ if(t.parentNode){ t.style.transition='opacity .5s'; t.style.opacity='0'; setTimeout(function(){ t.remove(); },520); } },10000);
+  }
+
+  function init(){ targets=buildTargets(); targets.forEach(function(tg){ elById[tg.id]=tg; makeBtn(tg); }); buildPanel(); maybeHint(); }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
+})();
+</script>
+</body>
+</html>
