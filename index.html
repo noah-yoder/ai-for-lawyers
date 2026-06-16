@@ -315,6 +315,21 @@
   section{ margin-top:66px; }
   @media (max-width:620px){ .topnav-inner{ padding:9px 22px; gap:13px; flex-wrap:wrap; } .topnav .wm{ font-size:.82rem; width:100%; } .topnav a.jump{ font-size:.72rem; } }
   @media print{ .topnav{ display:none !important; } }
+  .topnav a.jump.active{ color:var(--oxblood); border-bottom-color:var(--oxblood); }
+
+  /* ---------- tabbed panels (one section at a time) ---------- */
+  .panel{ display:none; }
+  .panel.active{ display:block; animation:rise .5s cubic-bezier(.2,.7,.2,1); }
+  .panel:first-child{ margin-top:0; }
+  .ov-cards{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:48px; }
+  .ov-card{ background:var(--paper-2); border:1px solid var(--hair); border-top:3px solid var(--oxblood); border-radius:3px; padding:22px 24px; display:flex; flex-direction:column; }
+  .ov-card .ov-k{ font-family:var(--display); font-weight:900; font-size:.7rem; letter-spacing:.18em; text-transform:uppercase; color:var(--brass); margin-bottom:8px; }
+  .ov-card h3{ font-size:1.5rem; margin:0 0 8px; letter-spacing:-.01em; }
+  .ov-card p{ font-size:1.0rem; color:var(--ink-soft); margin:0 0 16px; }
+  .ov-card .ov-go{ margin-top:auto; align-self:flex-start; font-family:var(--display); font-weight:600; font-size:.82rem; letter-spacing:.04em; color:#fff; background:var(--oxblood); border:none; padding:8px 15px; border-radius:2px; cursor:pointer; text-decoration:none; }
+  .ov-card .ov-go:hover{ opacity:.88; }
+  .ov-card.span2{ grid-column:1 / -1; border-top-color:var(--brass); }
+  @media (max-width:620px){ .ov-cards{ grid-template-columns:1fr; } }
 
   /* ======================= FEEDBACK LAYER ======================= */
   .fb-btn{
@@ -386,11 +401,13 @@
   }
   @media (max-width:620px){ .fb-panel{ right:12px; bottom:12px; } .fb-toast{ right:12px; } }
 </style>
+<noscript><style>.panel{display:block !important;} .topnav .jump{display:none;} .ov-cards{display:none;}</style></noscript>
 </head>
 <body>
 <nav class="topnav" aria-label="Section navigation">
   <div class="topnav-inner">
     <span class="wm">AI <span class="amp">for</span> Lawyers</span>
+    <a class="jump" href="#overview">Overview</a>
     <a class="jump" href="#doctrine">Doctrine</a>
     <a class="jump" href="#skills">Skills</a>
     <a class="jump" href="#capstone">Capstone</a>
@@ -398,6 +415,9 @@
   </div>
 </nav>
 <div class="sheet">
+
+  <!-- ======================= OVERVIEW (home tab) ======================= -->
+  <section class="panel reveal active" id="overview" data-panel>
 
   <!-- ======================= MASTHEAD ======================= -->
   <header class="masthead">
@@ -425,8 +445,32 @@
     <p>The design principle on the skills side: teach each capability concretely on one tool so it's actually learnable, but name the transferable skill every time&mdash;so what students learn survives whichever platform they end up using in practice.</p>
   </div>
 
+  <!-- high-level map of the course -->
+  <div class="ov-cards">
+    <div class="ov-card">
+      <span class="ov-k">I &middot; Nick&rsquo;s half</span>
+      <h3>Doctrine</h3>
+      <p>A working understanding of how AI is actually governed&mdash;US regulation, the EU AI Act, data &amp; privacy, sector regimes, IP, and liability&mdash;held to the doctrine a practitioner needs, all sitting on the ethics spine of ABA Formal Opinion 512.</p>
+      <a class="ov-go" href="#doctrine">See the doctrine arc &rarr;</a>
+    </div>
+    <div class="ov-card">
+      <span class="ov-k">II &middot; Noah&rsquo;s half</span>
+      <h3>Skills</h3>
+      <p>Hands-on, <em>free-first</em> capability building: failure modes &amp; prompting, verification, confidentiality, doing real legal work (drafting, document review, litigation prep), and designing &amp; supervising defensible AI workflows.</p>
+      <a class="ov-go" href="#skills">See the skills arc &rarr;</a>
+    </div>
+    <div class="ov-card span2">
+      <span class="ov-k">III &middot; the spine</span>
+      <h3>Capstone</h3>
+      <p>&ldquo;Build it, break it, defend it.&rdquo; Each student designs an AI-assisted legal workflow for a real scenario, stress-tests it against adversarial cases, and defends it against every duty Op. 512 names. <a href="#discussion">A handful of genuine forks</a> are open for our conversation.</p>
+      <a class="ov-go" href="#capstone">See the capstone &rarr;</a>
+    </div>
+  </div>
+
+  </section>
+
   <!-- ======================= I. DOCTRINE ======================= -->
-  <section id="doctrine" class="reveal d2">
+  <section id="doctrine" class="panel reveal d2" data-panel>
     <div class="sec-head">
       <span class="sec-num">I</span>
       <h2>The Doctrine Arc</h2>
@@ -477,7 +521,7 @@
   </section>
 
   <!-- ======================= II. SKILLS ======================= -->
-  <section id="skills" class="reveal d3">
+  <section id="skills" class="panel reveal d3" data-panel>
     <div class="sec-head">
       <span class="sec-num">II</span>
       <h2>The Skills Arc</h2>
@@ -547,7 +591,7 @@
   </section>
 
   <!-- ======================= III. CAPSTONE ======================= -->
-  <section id="capstone" class="reveal d4">
+  <section id="capstone" class="panel reveal d4" data-panel>
     <div class="sec-head">
       <span class="sec-num">III</span>
       <h2>The Capstone</h2>
@@ -586,7 +630,7 @@
   </section>
 
   <!-- ======================= IV. DISCUSSION ======================= -->
-  <section id="discussion" class="reveal d5">
+  <section id="discussion" class="panel reveal d5" data-panel>
     <div class="sec-head">
       <span class="sec-num">IV</span>
       <h2>For Our Conversation</h2>
@@ -741,7 +785,7 @@
     });
   }
 
-  function goTo(id){ var tg=elById[id]; if(!tg) return; if(card) card.classList.remove('open'); tg.host.scrollIntoView({behavior:'smooth',block:'center'}); tg.host.classList.add('fb-flash'); setTimeout(function(){ tg.host.classList.remove('fb-flash'); },1500); }
+  function goTo(id){ var tg=elById[id]; if(!tg) return; if(card) card.classList.remove('open'); var pnl=tg.host.closest('.panel'); if(pnl&&window.__showTab) window.__showTab(pnl.id); setTimeout(function(){ tg.host.scrollIntoView({behavior:'smooth',block:'center'}); tg.host.classList.add('fb-flash'); setTimeout(function(){ tg.host.classList.remove('fb-flash'); },1500); }, pnl?90:0); }
 
   function digest(){
     var oc=ordered(); var who=(state.name||'').trim()||'Nick';
@@ -778,6 +822,31 @@
 
   function init(){ targets=buildTargets(); targets.forEach(function(tg){ elById[tg.id]=tg; makeBtn(tg); }); buildPanel(); maybeHint(); }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
+})();
+</script>
+<script>
+/* ---------- tab routing: one panel visible at a time, #hash addressable ---------- */
+(function(){
+  "use strict";
+  var panels=[].slice.call(document.querySelectorAll('[data-panel]'));
+  var tabs=[].slice.call(document.querySelectorAll('.topnav a.jump'));
+  var ids=panels.map(function(p){ return p.id; });
+  if(!panels.length) return;
+  function show(name){
+    if(ids.indexOf(name)<0) name=ids[0];
+    panels.forEach(function(p){ p.classList.toggle('active', p.id===name); });
+    tabs.forEach(function(t){ t.classList.toggle('active', t.getAttribute('href')==='#'+name); });
+    try{ if(location.hash!=='#'+name) history.replaceState(null,'','#'+name); }catch(e){}
+  }
+  window.__showTab=function(name){ show(name); window.scrollTo(0,0); };
+  tabs.forEach(function(t){
+    t.addEventListener('click',function(e){ e.preventDefault(); show(t.getAttribute('href').slice(1)); window.scrollTo({top:0,behavior:'smooth'}); });
+  });
+  document.querySelectorAll('.ov-go, .ov-card a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){ e.preventDefault(); show(a.getAttribute('href').slice(1)); window.scrollTo({top:0,behavior:'smooth'}); });
+  });
+  window.addEventListener('hashchange',function(){ show(location.hash.slice(1)); window.scrollTo(0,0); });
+  show((location.hash||'#overview').slice(1));
 })();
 </script>
 </body>
