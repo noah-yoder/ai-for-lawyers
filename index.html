@@ -301,6 +301,21 @@
     .masthead{ border-top:2px solid #000; padding-top:20px; }
   }
 
+  /* ---------- top nav (kills the endless-scroll feel) ---------- */
+  html{ scroll-behavior:smooth; }
+  .topnav{ position:sticky; top:0; z-index:40; background:rgba(246,241,230,.88); backdrop-filter:blur(7px); -webkit-backdrop-filter:blur(7px); border-bottom:1px solid var(--hair); }
+  .topnav-inner{ max-width:var(--maxw); margin:0 auto; padding:11px 40px; display:flex; align-items:center; gap:20px; }
+  .topnav .wm{ font-family:var(--display); font-weight:900; font-size:.96rem; letter-spacing:.01em; color:var(--ink); margin-right:auto; }
+  .topnav .wm .amp{ color:var(--oxblood); font-style:italic; font-weight:500; }
+  .topnav a.jump{ font-family:var(--display); font-weight:600; font-size:.8rem; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-soft); text-decoration:none; padding:3px 1px; border-bottom:2px solid transparent; transition:color .15s,border-color .15s; }
+  .topnav a.jump:hover{ color:var(--oxblood); border-bottom-color:var(--brass); }
+  section[id]{ scroll-margin-top:64px; }
+  /* tightened vertical rhythm */
+  .masthead{ padding-top:58px; }
+  section{ margin-top:66px; }
+  @media (max-width:620px){ .topnav-inner{ padding:9px 22px; gap:13px; flex-wrap:wrap; } .topnav .wm{ font-size:.82rem; width:100%; } .topnav a.jump{ font-size:.72rem; } }
+  @media print{ .topnav{ display:none !important; } }
+
   /* ======================= FEEDBACK LAYER ======================= */
   .fb-btn{
     display:inline-flex; align-items:center; justify-content:center;
@@ -373,6 +388,15 @@
 </style>
 </head>
 <body>
+<nav class="topnav" aria-label="Section navigation">
+  <div class="topnav-inner">
+    <span class="wm">AI <span class="amp">for</span> Lawyers</span>
+    <a class="jump" href="#doctrine">Doctrine</a>
+    <a class="jump" href="#skills">Skills</a>
+    <a class="jump" href="#capstone">Capstone</a>
+    <a class="jump" href="#discussion">Discussion</a>
+  </div>
+</nav>
 <div class="sheet">
 
   <!-- ======================= MASTHEAD ======================= -->
@@ -402,7 +426,7 @@
   </div>
 
   <!-- ======================= I. DOCTRINE ======================= -->
-  <section class="reveal d2">
+  <section id="doctrine" class="reveal d2">
     <div class="sec-head">
       <span class="sec-num">I</span>
       <h2>The Doctrine Arc</h2>
@@ -420,7 +444,7 @@
     <div class="cluster">
       <h4 class="cluster-title">How AI is actually governed</h4>
       <dl class="topics">
-        <div class="topic"><dt>The US regulatory reality</dt><dd>Why there&rsquo;s no single AI statute&mdash;and how the government actually regulates: <b>export controls</b> on advanced compute and model weights as the primary federal lever, alongside the state-law patchwork and agency action.</dd></div>
+        <div class="topic"><dt>The US regulatory reality</dt><dd>Why there&rsquo;s no single AI statute&mdash;and how the government actually regulates: <b>export controls</b> on advanced compute and model weights as a primary federal lever, alongside the state-law patchwork and agency action.</dd></div>
         <div class="topic"><dt>The EU AI Act &amp; international comparators</dt><dd>The contrast case&mdash;what comprehensive, risk-tiered regulation looks like, and what it asks of the businesses our students will advise.</dd></div>
         <div class="topic"><dt>Data governance &amp; privacy</dt><dd>GDPR, the US state laws, biometrics. The deepest well in the course, because data governance touches every practice area an attorney might enter.</dd></div>
       </dl>
@@ -453,13 +477,13 @@
   </section>
 
   <!-- ======================= II. SKILLS ======================= -->
-  <section class="reveal d3">
+  <section id="skills" class="reveal d3">
     <div class="sec-head">
       <span class="sec-num">II</span>
       <h2>The Skills Arc</h2>
       <span class="owner">Noah&rsquo;s half</span>
     </div>
-    <p class="sec-intro">Organized by <em>capability</em>, not by use case&mdash;students learn to operate the instrument deeply, and the legal tasks become the vehicle. Taught concretely on Claude, assuming students carry at least a Claude Pro subscription, with every capability named as a transferable skill.</p>
+    <p class="sec-intro">Organized by <em>capability</em>, not by use case&mdash;students learn to operate the instrument deeply, and the legal tasks become the vehicle. <em>Free-first and tool-agnostic:</em> every skill runs on the free tiers of ChatGPT, Claude, and NotebookLM, and each capability is named as a transferable skill so it survives whichever platform a student ends up using. Professional and paid features are demonstrated where they meaningfully differ&mdash;never required to complete the course.</p>
 
     <div class="block">
       <div class="block-head">
@@ -468,10 +492,10 @@
       </div>
       <div class="block-body">
         <dl class="topics">
-          <div class="topic"><dt>Mental model &amp; failure modes</dt><dd>What the model is, how it behaves, and why it fails&mdash;hallucination, sycophancy, confident wrongness&mdash;produced on purpose so students recognize them.</dd></div>
-          <div class="topic"><dt>Prompting</dt><dd>The core craft of getting useful, reliable output.</dd></div>
-          <div class="topic"><dt>Verification</dt><dd><em>Never cite what you haven&rsquo;t read.</em> Taught early, because it&rsquo;s the safety habit underneath every later capability.</dd></div>
-          <div class="topic"><dt>Data &amp; confidentiality</dt><dd>Where your inputs go, and what client information may touch which tool.</dd></div>
+          <div class="topic"><dt>Mental model &amp; failure modes</dt><dd>How the model actually works&mdash;next-token prediction, no internal database of facts&mdash;and the three failures it produces: hallucination, sycophancy, and confident wrongness, induced <em>on purpose</em> in the lab so students recognize them on sight.</dd></div>
+          <div class="topic"><dt>Prompting as a craft</dt><dd>Beyond &ldquo;be specific.&rdquo; The five-part calibrated prompt&mdash;role, task, facts, constraints, output format&mdash;and the difference a leading vs. neutral prompt makes, practiced by rebuilding a weak prompt into a reliable one.</dd></div>
+          <div class="topic"><dt>Verification you can actually perform</dt><dd><em>Never cite what you haven&rsquo;t read.</em> A three-pass protocol&mdash;does the source exist, does it support the claim, is it still good law&mdash;run by hand against a planted memo, including the dangerous &ldquo;real source, wrong proposition&rdquo; miscite.</dd></div>
+          <div class="topic"><dt>Data &amp; confidentiality</dt><dd>Where your inputs actually go; tiering tools by what client information may touch them; sanitizing a document, then auditing whether it could still be re-identified.</dd></div>
         </dl>
       </div>
     </div>
@@ -479,35 +503,62 @@
     <div class="block">
       <div class="block-head">
         <span class="block-tag">Block 2</span>
-        <div><h3>Core functionality</h3><span class="sub">The working surfaces of the tool</span></div>
+        <div><h3>Doing the work</h3><span class="sub">Real legal tasks, start to finish</span></div>
       </div>
       <div class="block-body">
         <dl class="topics">
-          <div class="topic"><dt>Conversation, done well</dt><dd>The baseline most users never get past.</dd></div>
-          <div class="topic"><dt>Projects</dt><dd>Persistent context and a curated knowledge base. <span class="touch">Like a matter file the assistant always has open.</span></dd></div>
-          <div class="topic"><dt>Skills</dt><dd>Packaged, reusable instructions. <span class="touch">A firm&rsquo;s templates, checklists, and playbooks&mdash;made runnable.</span></dd></div>
-          <div class="topic"><dt>Artifacts</dt><dd>Generating and iterating real work product&mdash;a memo, a clause library, a timeline&mdash;in a live, editable space.</dd></div>
-          <div class="topic"><dt>Documents &amp; grounded research</dt><dd>Working over real files, with retrieval and sources&mdash;and an honest look at why grounded tools still hallucinate.</dd></div>
-          <div class="topic"><dt>Claude Code</dt><dd>The agentic, file-aware frontier. The most advanced capability in the course&mdash;and arguably the one that gives a graduate the most leverage no one else in the room will have.</dd></div>
+          <div class="topic"><dt>Drafting with AI</dt><dd>The iteration loop&mdash;generate, critique, constrain, verify&mdash;and catching the sector-blind draft (the contract that quietly omits the clause a regulation requires), then translating the result into plain English a client can act on.</dd></div>
+          <div class="topic"><dt>Document review &amp; diligence</dt><dd>Extraction across a document set with quote-and-cite discipline, and the four <em>silent</em> failure modes that sink review&mdash;filled-in blanks, missed cross-references, stale extraction, and meaning-flattening paraphrase (&ldquo;agrees to assign&rdquo; becomes &ldquo;owns&rdquo;)&mdash;caught with a supervision log.</dd></div>
+          <div class="topic"><dt>Litigation prep</dt><dd>AI discovery triage with privilege flags, auditing a deposition outline for what&rsquo;s grounded in the record vs. assumed, and red-teaming your own brief&mdash;the verification turn the lawyers in <em>Mata v. Avianca</em> skipped.</dd></div>
         </dl>
       </div>
-      <div class="cap-callout">Block 3 is the capstone &mdash; <b>where the pieces come together &darr;</b></div>
+    </div>
+
+    <div class="block">
+      <div class="block-head">
+        <span class="block-tag">Block 3</span>
+        <div><h3>Designing &amp; supervising workflows</h3><span class="sub">From one-off prompts to a defensible process</span></div>
+      </div>
+      <div class="block-body">
+        <dl class="topics">
+          <div class="topic"><dt>Decomposition &mdash; and when <em>not</em> to use AI</dt><dd>Breaking a real task into green / yellow / red zones, with the red-zone triggers that keep a step in human hands, captured on a reusable workflow-design card. Knowing where AI doesn&rsquo;t go is the skill that separates this from a tool tutorial.</dd></div>
+          <div class="topic"><dt>Supervised review &amp; vendor diligence</dt><dd>A five-lens protocol for critiquing an AI tool or its output, comparing a human reviewer against an AI one, and treating structured supervisory review as its own learnable skill.</dd></div>
+          <div class="topic"><dt>QA rubrics</dt><dd>Building a six-to-eight-point quality checklist across the error families that actually recur&mdash;fabrication, mischaracterization, math and logic, internal inconsistency, omission, overclaiming, bias&mdash;then grading the AI&rsquo;s own grading.</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-head">
+        <span class="block-tag">Demonstrated</span>
+        <div><h3>Frontier capabilities</h3><span class="sub">Shown in class &mdash; never required to pass</span></div>
+      </div>
+      <div class="block-body">
+        <p class="sec-intro" style="margin:16px 0 2px;max-width:none;">Everything above runs on free tiers. These higher-leverage capabilities are <em>demonstrated</em> so students know they exist and what they unlock&mdash;and anyone carrying Claude Pro can take them further&mdash;but a free-tier path is always provided.</p>
+        <dl class="topics">
+          <div class="topic"><dt>Projects &amp; persistent context</dt><dd>A curated knowledge base the assistant always has open. <span class="touch">Like a matter file that never closes.</span></dd></div>
+          <div class="topic"><dt>Skills &amp; Artifacts</dt><dd>Reusable, packaged instructions&mdash;<span class="touch">a firm&rsquo;s templates and checklists made runnable</span>&mdash;and a live, editable space for building real work product.</dd></div>
+          <div class="topic"><dt>Grounded research</dt><dd>Working over real files with retrieval and sources&mdash;plus an honest look at why even grounded tools still mischaracterize a holding.</dd></div>
+          <div class="topic"><dt>Claude Code</dt><dd>The agentic, file-aware frontier&mdash;a glimpse of where the most leverage will come from next.</dd></div>
+        </dl>
+      </div>
+      <div class="cap-callout">Then it all comes together &mdash; <b>the capstone &darr;</b></div>
     </div>
   </section>
 
   <!-- ======================= III. CAPSTONE ======================= -->
-  <section class="reveal d4">
+  <section id="capstone" class="reveal d4">
     <div class="sec-head">
       <span class="sec-num">III</span>
       <h2>The Capstone</h2>
-      <span class="owner">Block 3 &middot; the spine</span>
+      <span class="owner">Block 4 &middot; the spine</span>
     </div>
     <p class="sec-intro">Everything before this taught a capability in isolation. The capstone is the only place students learn <em>orchestration</em>&mdash;composing those capabilities into a workflow that does real legal work end to end, then defending it like a practitioner.</p>
 
     <div class="capstone">
       <span class="eyebrow">A defended workflow</span>
       <h3>Build it, break it, defend it.</h3>
-      <p>Each student designs an AI-assisted legal workflow for a real scenario, composes it from the full toolkit&mdash;<b>a Project, a Skill, real documents, verification gates, and, where it fits, Claude Code</b>&mdash;then stress-tests it against adversarial cases and defends every design choice.</p>
+      <p>Each student designs an AI-assisted legal workflow for a real scenario, composes it from the skills above&mdash;<b>task decomposition into green/yellow/red zones, verification gates, and human checkpoints</b>, reaching for advanced capabilities like Projects or Claude Code where they&rsquo;re available and actually help&mdash;then stress-tests it against adversarial cases and defends every design choice.</p>
 
       <div class="flow">
         <span class="step">Scope</span><span class="arr">&rarr;</span>
@@ -527,7 +578,7 @@
           <div class="duty"><span class="rule-no">Rule 1.6</span><span>Confidentiality &mdash; what data touched what, and how</span></div>
           <div class="duty"><span class="rule-no">Rule 1.4</span><span>Communication &mdash; what the client is told about the AI use</span></div>
           <div class="duty"><span class="rule-no">Rule 5.1/5.3</span><span>Supervision &mdash; the checkpoints and human sign-off</span></div>
-          <div class="duty"><span class="rule-no">Rule 3.3</span><span>Candor &mdash; the verification gates</span></div>
+          <div class="duty"><span class="rule-no">Rule 3.3/3.1</span><span>Candor &amp; meritorious claims &mdash; the verification gates that keep a fabricated cite out of a filing</span></div>
           <div class="duty"><span class="rule-no">Rule 1.5</span><span>Fees &mdash; how AI efficiency shows up in a bill, honestly</span></div>
         </div>
       </div>
@@ -535,7 +586,7 @@
   </section>
 
   <!-- ======================= IV. DISCUSSION ======================= -->
-  <section class="reveal d5">
+  <section id="discussion" class="reveal d5">
     <div class="sec-head">
       <span class="sec-num">IV</span>
       <h2>For Our Conversation</h2>
@@ -554,7 +605,7 @@
       </div></div>
       <div class="point"><span class="n"></span><div>
         <h4>Student tooling</h4>
-        <p>The skills half assumes students carry at least Claude Pro (~$20/mo) as a baseline&mdash;that&rsquo;s what makes Projects, Skills, and Claude Code teachable hands-on. The one open question is the enterprise tier (a real document-management system, connectors), which depends on what the school is willing to fund.</p>
+        <p>The skills half is built <em>free-first</em>&mdash;every lab runs on the free tiers of ChatGPT, Claude, and NotebookLM, so cost is never a barrier to completing the course. Claude Pro (~$20/mo) and an enterprise tier (a real document-management system, connectors) unlock the frontier capabilities we demo&mdash;the open question is how much of that the school funds versus leaves as optional enrichment.</p>
       </div></div>
       <div class="point"><span class="n"></span><div>
         <h4>The capstone as the graded spine</h4>
