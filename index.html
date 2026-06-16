@@ -319,7 +319,7 @@
 
   /* ---------- tabbed panels (one section at a time) ---------- */
   .panel{ display:none; }
-  .panel.active{ display:block; animation:rise .5s cubic-bezier(.2,.7,.2,1); }
+  .panel.active{ display:block; opacity:1; animation:rise .5s cubic-bezier(.2,.7,.2,1); }
   .panel:first-child{ margin-top:0; }
   .ov-cards{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:48px; }
   .ov-card{ background:var(--paper-2); border:1px solid var(--hair); border-top:3px solid var(--oxblood); border-radius:3px; padding:22px 24px; display:flex; flex-direction:column; }
