@@ -454,7 +454,7 @@
     <div class="ov-card">
       <span class="ov-k">II &middot; Noah&rsquo;s half</span>
       <h3>Skills</h3>
-      <p>Hands-on capability building: failure modes and prompting, verification, confidentiality, real legal work (drafting, document review, litigation prep), and designing and supervising AI workflows. Each capability is taught on one tool and named as a transferable skill, so it carries to whatever platform a student practices on.</p>
+      <p>Claude-first and hands-on. Demystify the model (it&rsquo;s not magic), master Claude&rsquo;s core functions one at a time &mdash; Projects, Skills, Artifacts, chat, research &mdash; learn Claude Code from the terminal up, then build real legal workflows where the doctrine gets applied. Verification and confidentiality are woven through every step.</p>
       <a class="ov-go" href="#skills">See the skills arc &rarr;</a>
     </div>
     <div class="ov-card span2">
@@ -524,19 +524,18 @@
       <h2>The Skills Arc</h2>
       <span class="owner">Noah&rsquo;s half</span>
     </div>
-    <p class="sec-intro">Organized by capability, not by use case. Students build each capability deeply, using real legal tasks as the material. The arc is tool-agnostic: each capability is named as a transferable skill, so what students learn carries to whatever platform they end up using. Where a tool&rsquo;s advanced features change the work, the course shows them.</p>
+    <p class="sec-intro">Claude-first and hands-on. We start by demystifying the model &mdash; it&rsquo;s not magic, and you can see everything it&rsquo;s doing &mdash; then learn Claude&rsquo;s core functions one at a time, get fluent in Claude Code from the terminal up, and finish by building real legal workflows. Verification and confidentiality aren&rsquo;t a separate unit; they&rsquo;re built into every demo and every workflow. We teach on Claude because it&rsquo;s the tool you&rsquo;ll actually use, and the underlying skills transfer to whatever you adopt next.</p>
 
     <div class="block">
       <div class="block-head">
         <span class="block-tag">Block 1</span>
-        <div><h3>The basics</h3><span class="sub">Roughly the first month &mdash; learn the instrument</span></div>
+        <div><h3>Demystify</h3><span class="sub">It&rsquo;s not magic &mdash; you can see everything</span></div>
       </div>
       <div class="block-body">
         <dl class="topics">
-          <div class="topic"><dt>Mental model &amp; failure modes</dt><dd>How the model works: next-token prediction, with no internal database of facts. The three failures it produces (hallucination, sycophancy, and confident wrongness) are induced <em>on purpose</em> in the lab so students recognize them on sight.</dd></div>
-          <div class="topic"><dt>Prompting as a craft</dt><dd>Beyond &ldquo;be specific.&rdquo; The five-part calibrated prompt&mdash;role, task, facts, constraints, output format&mdash;and the difference a leading vs. neutral prompt makes, practiced by rebuilding a weak prompt into a reliable one.</dd></div>
-          <div class="topic"><dt>Verification you can perform</dt><dd><em>Never cite what you haven&rsquo;t read</em> &mdash; the verification turn the lawyers in <em>Mata v. Avianca</em> skipped. A three-pass protocol (does the source exist, does it support the claim, is it still good law), run by hand against a planted memo, including the &ldquo;real source, wrong proposition&rdquo; miscite.</dd></div>
-          <div class="topic"><dt>Data &amp; confidentiality</dt><dd>Where your inputs go; tiering tools by what client information may touch them; sanitizing a document, then auditing whether it could still be re-identified.</dd></div>
+          <div class="topic"><dt>What it&rsquo;s really doing</dt><dd>Next-token prediction, with no internal database of facts. We open the hood so the model stops feeling like magic and starts behaving like a tool you can predict and direct.</dd></div>
+          <div class="topic"><dt>Failure modes, induced on purpose</dt><dd>Hallucination, sycophancy, and confident wrongness, triggered live in class so you recognize them on sight &mdash; and the reflex that answers them: <em>never cite what you haven&rsquo;t read</em>, the verification turn the lawyers in <em>Mata v. Avianca</em> skipped.</dd></div>
+          <div class="topic"><dt>Prompting, briefly</dt><dd>The difference a leading vs. a neutral prompt makes, shown by rebuilding a weak prompt into a reliable one. Enough craft to get honest output before we add any tooling.</dd></div>
         </dl>
       </div>
     </div>
@@ -544,13 +543,15 @@
     <div class="block">
       <div class="block-head">
         <span class="block-tag">Block 2</span>
-        <div><h3>Doing the work</h3><span class="sub">Real legal tasks, start to finish</span></div>
+        <div><h3>The core functions of Claude</h3><span class="sub">Each one: an analogy, a demo, pushed to the max</span></div>
       </div>
       <div class="block-body">
         <dl class="topics">
-          <div class="topic"><dt>Drafting with AI</dt><dd>The iteration loop&mdash;generate, critique, constrain, verify&mdash;and catching the sector-blind draft (the contract that quietly omits the clause a regulation requires), then translating the result into plain English a client can act on.</dd></div>
-          <div class="topic"><dt>Document review &amp; diligence</dt><dd>Extraction across a document set with quote-and-cite discipline, and the four <em>silent</em> failure modes that sink review&mdash;filled-in blanks, missed cross-references, stale extraction, and meaning-flattening paraphrase (&ldquo;agrees to assign&rdquo; becomes &ldquo;owns&rdquo;)&mdash;caught with a supervision log.</dd></div>
-          <div class="topic"><dt>Litigation prep</dt><dd>AI discovery triage with privilege flags, auditing a deposition outline for what&rsquo;s grounded in the record vs. assumed, and red-teaming your own brief before you file it.</dd></div>
+          <div class="topic"><dt>Chat, done well</dt><dd><span class="touch">A sharp associate with no memory of yesterday.</span> Turning a vague ask into a structured, sourced answer &mdash; the baseline most people never get past.</dd></div>
+          <div class="topic"><dt>Projects</dt><dd><span class="touch">A matter file the assistant always has open.</span> Stand one up, decide first what client information may touch the tool, load real documents, and watch recall improve across sessions.</dd></div>
+          <div class="topic"><dt>Skills</dt><dd><span class="touch">A firm&rsquo;s template or checklist, made runnable.</span> Turn a task you repeat into a one-command skill.</dd></div>
+          <div class="topic"><dt>Artifacts</dt><dd><span class="touch">A document that talks back.</span> Draft and iterate real work product &mdash; a memo, a clause library, a timeline &mdash; in a live, editable space.</dd></div>
+          <div class="topic"><dt>Research mode</dt><dd><span class="touch">A research assistant who shows their trail.</span> Run a multi-step, sourced investigation, then check every source the way you&rsquo;d check a junior&rsquo;s.</dd></div>
         </dl>
       </div>
     </div>
@@ -558,29 +559,30 @@
     <div class="block">
       <div class="block-head">
         <span class="block-tag">Block 3</span>
-        <div><h3>Designing &amp; supervising workflows</h3><span class="sub">From one-off prompts to a defensible process</span></div>
+        <div><h3>Claude Code, from zero</h3><span class="sub">The terminal up &mdash; your core professional tool</span></div>
       </div>
       <div class="block-body">
         <dl class="topics">
-          <div class="topic"><dt>Decomposition &mdash; and when <em>not</em> to use AI</dt><dd>Breaking a real task into green / yellow / red zones, with the red-zone triggers that keep a step in human hands, captured on a reusable workflow-design card the student walks out with.</dd></div>
-          <div class="topic"><dt>Supervised review &amp; vendor diligence</dt><dd>A five-lens protocol for critiquing an AI tool or its output, comparing a human reviewer against an AI one, and treating structured supervisory review as its own learnable skill.</dd></div>
-          <div class="topic"><dt>QA rubrics</dt><dd>Building a six-to-eight-point quality checklist across the error families that recur in practice: fabrication, mischaracterization, math and logic, internal inconsistency, omission, overclaiming, bias. Then grading the AI&rsquo;s own grading.</dd></div>
+          <div class="topic"><dt>The terminal, demystified</dt><dd>Core moves only, no prior command line assumed: move into a folder, step up or down a level, list what&rsquo;s there, make a new folder, and open Claude inside it.</dd></div>
+          <div class="topic"><dt>Install &amp; first run</dt><dd>Getting Claude Code onto your own laptop and running it in a real folder &mdash; the setup that makes everything after it possible.</dd></div>
+          <div class="topic"><dt>Slash commands, agents &amp; cron jobs</dt><dd>What a slash command does, what an agent is, and what a cron job automates &mdash; the parts that turn Claude from a chat box into a system that does work for you.</dd></div>
+          <div class="topic"><dt>How it differs from regular Claude</dt><dd>File-aware and agentic: it reads and writes your actual documents and runs multi-step tasks, where chat only talks. The capability worth real fluency for the rest of your career.</dd></div>
         </dl>
       </div>
     </div>
 
     <div class="block">
       <div class="block-head">
-        <span class="block-tag">Demonstrated</span>
-        <div><h3>Frontier capabilities</h3><span class="sub">Shown in class</span></div>
+        <span class="block-tag">Block 4</span>
+        <div><h3>Workflows &mdash; where the rubber meets the road</h3><span class="sub">Doctrine, applied to real work</span></div>
       </div>
       <div class="block-body">
-        <p class="sec-intro" style="margin:16px 0 2px;max-width:none;">These are the higher-capability tools students should know exist, and know what they unlock. The course teaches the capability; Claude is the example platform, and each has equivalents across the major tools. We demonstrate them in class so students can recognize them and reach for them in practice.</p>
+        <p class="sec-intro" style="margin:16px 0 2px;max-width:none;">A few worked examples drawn from real legal work, where the doctrine from Nick&rsquo;s half becomes a concrete build: the rule names a duty, so the workflow is designed to meet it. Verification gates and human checkpoints are part of every one.</p>
         <dl class="topics">
-          <div class="topic"><dt>Projects &amp; persistent context</dt><dd>A curated knowledge base the assistant always has open. <span class="touch">Like a matter file that never closes.</span></dd></div>
-          <div class="topic"><dt>Skills &amp; Artifacts</dt><dd>Reusable, packaged instructions&mdash;<span class="touch">a firm&rsquo;s templates and checklists made runnable</span>&mdash;and a live, editable space for building real work product.</dd></div>
-          <div class="topic"><dt>Grounded research</dt><dd>Working over real files with retrieval and sources, and why even grounded tools still mischaracterize a holding.</dd></div>
-          <div class="topic"><dt>Claude Code</dt><dd>The agentic, file-aware frontier. A glimpse of where the work is heading next.</dd></div>
+          <div class="topic"><dt>Drafting under a governance rule</dt><dd>Generate, critique, constrain, verify &mdash; and catch the sector-blind draft (the contract that omits a clause a regulation requires). The doctrine names the duty; the workflow builds the check.</dd></div>
+          <div class="topic"><dt>Document review &amp; diligence at scale</dt><dd>Extraction with quote-and-cite discipline, catching the silent failures that sink review (&ldquo;agrees to assign&rdquo; becomes &ldquo;owns&rdquo;), with a supervision log that satisfies the duty to supervise.</dd></div>
+          <div class="topic"><dt>Litigation prep, verified</dt><dd>Discovery triage with privilege flags and a deposition outline audited for what&rsquo;s grounded vs. assumed &mdash; red-teaming your own brief so a fabricated cite never reaches the court.</dd></div>
+          <div class="topic"><dt>Designing a defensible workflow</dt><dd>Decompose a task into green / yellow / red zones, decide where AI doesn&rsquo;t go, and build the verification gates and human sign-off &mdash; the workflow you defend in the capstone.</dd></div>
         </dl>
       </div>
     </div>
