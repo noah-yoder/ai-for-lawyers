@@ -178,6 +178,7 @@
   .ov-go{ margin-top:auto; align-self:flex-start; font-family:var(--ui); font-weight:600; font-size:.78rem; letter-spacing:.03em;
     color:var(--brass); background:none; border:1px solid var(--brass-soft); padding:8px 14px; border-radius:8px; cursor:pointer; text-decoration:none; transition:background .18s,color .18s; }
   .ov-go:hover{ background:var(--brass); color:#1a160d; }
+  .ov-card.span2{ grid-column:1 / -1; }
   @media (max-width:680px){ .ov-cards{ grid-template-columns:1fr; } }
 
   /* ---------- colophon ---------- */
@@ -316,6 +317,7 @@
       <a class="jump" href="#overview">Overview</a>
       <a class="jump" href="#doctrine">Doctrine</a>
       <a class="jump" href="#skills">Skills</a>
+      <a class="jump" href="#capstone">Capstone</a>
     </nav>
     <div class="topbar-actions">
       <button class="howto" id="howto-open" type="button">How to review</button>
@@ -380,6 +382,12 @@
         <h3>Skills</h3>
         <p>Claude-first and hands-on. Demystify the model (it&rsquo;s not magic), master Claude&rsquo;s core functions one at a time &mdash; Projects, Skills, Artifacts, chat, research &mdash; learn Claude Code from the terminal up, then build real legal workflows where the doctrine gets applied. Verification and confidentiality are woven through every step.</p>
         <a class="ov-go" href="#skills">See the skills arc &rarr;</a>
+      </div>
+      <div class="ov-card span2">
+        <span class="ov-k">III &middot; the spine</span>
+        <h3>Capstone</h3>
+        <p>Where the tools and the doctrine converge. Each student designs an AI-assisted legal workflow for a synthetic matter, stress-tests it against adversarial cases, and defends every choice &mdash; build it, break it, defend it.</p>
+        <a class="ov-go" href="#capstone">See the capstone &rarr;</a>
       </div>
     </div>
   </section>
@@ -527,6 +535,70 @@
           <div class="topic"><dt>Document review &amp; diligence at scale</dt><dd>Extraction with quote-and-cite discipline, catching the silent failures that sink review (&ldquo;agrees to assign&rdquo; becomes &ldquo;owns&rdquo;), with a supervision log that satisfies the duty to supervise.</dd></div>
           <div class="topic"><dt>Litigation prep, verified</dt><dd>Discovery triage with privilege flags and a deposition outline audited for what&rsquo;s grounded vs. assumed &mdash; red-teaming your own brief so a fabricated cite never reaches the court.</dd></div>
           <div class="topic"><dt>Designing a defensible workflow</dt><dd>Decompose a task into green / yellow / red zones, decide where AI doesn&rsquo;t go, and build the verification gates and human sign-off &mdash; the workflow you defend in the capstone.</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= III. CAPSTONE ======================= -->
+  <section id="capstone" class="panel" data-panel>
+    <div class="sec-head">
+      <span class="sec-num">III</span>
+      <h2>The Capstone</h2>
+      <span class="owner">where it all comes together</span>
+    </div>
+    <p class="sec-intro">The one place the tools and the doctrine converge. Each student designs a real AI-assisted legal workflow for a synthetic matter, then defends it like a practitioner. Solo, across the semester, and scoped to be genuinely doable &mdash; not a second job. <em>Build it, break it, defend it.</em></p>
+
+    <div class="block">
+      <div class="block-head">
+        <span class="block-tag">Build</span>
+        <div><h3>Build the workflow</h3><span class="sub">A required core &mdash; reach for the rest where it helps</span></div>
+      </div>
+      <div class="block-body">
+        <dl class="topics">
+          <div class="topic"><dt>The core every build needs</dt><dd>A <span class="touch">Project</span> as the matter file, at least one reusable <span class="touch">Skill</span> for the step you repeat, verification gates with a human checkpoint, and a one-page workflow-design card.</dd></div>
+          <div class="topic"><dt>Go further where it earns its place</dt><dd>Claude Code, agents, and research mode are there for the workflows that genuinely need multi-step or file-aware work &mdash; encouraged, not required, so no one bolts on a tool just to tick a box.</dd></div>
+          <div class="topic"><dt>Always synthetic</dt><dd>Every matter, party, and document is invented for the course. Nothing real goes into the tool &mdash; the confidentiality rule, lived.</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-head">
+        <span class="block-tag">Break</span>
+        <div><h3>Break it on purpose</h3><span class="sub">A test that fails is a good result</span></div>
+      </div>
+      <div class="block-body">
+        <dl class="topics">
+          <div class="topic"><dt>Run it against adversarial cases</dt><dd>A planted bad document, a fabrication trap, a confidentiality trap. Find where your own workflow breaks before a client or a court does.</dd></div>
+          <div class="topic"><dt>Log what it catches and misses</dt><dd>The student who surfaces their workflow&rsquo;s failure modes scores higher than the one whose demo merely went smoothly.</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-head">
+        <span class="block-tag">Defend</span>
+        <div><h3>Defend the design</h3><span class="sub">A short memo, a live demo, and questions</span></div>
+      </div>
+      <div class="block-body">
+        <dl class="topics">
+          <div class="topic"><dt>A focused memo</dt><dd>Five to eight pages defending the design choices &mdash; why this workflow, these tools, these checkpoints.</dd></div>
+          <div class="topic"><dt>A live demo that shows the catch</dt><dd>A brief run in front of the room that has to show the workflow <em>catching</em> a planted problem, not just producing a clean answer.</dd></div>
+          <div class="topic"><dt>Q&amp;A</dt><dd>Stand behind the choices out loud &mdash; the part that proves the understanding is real.</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-head">
+        <span class="block-tag">Coverage</span>
+        <div><h3>What it has to satisfy</h3><span class="sub">The duties on every build; the doctrine per scenario</span></div>
+      </div>
+      <div class="block-body">
+        <dl class="topics">
+          <div class="topic"><dt>The professional-responsibility spine</dt><dd>Every project is defended against the duties that bite any AI legal workflow &mdash; competence, confidentiality, supervision, and candor (ABA Opinion 512).</dd></div>
+          <div class="topic"><dt>The doctrine its scenario sits in</dt><dd>Each workflow also engages the one or two substantive areas its matter raises &mdash; privacy, sector regulation, IP, litigation, or bias. No single project covers all of Nick&rsquo;s doctrine; <span class="touch">across the class, all of it gets exercised.</span></dd></div>
         </dl>
       </div>
     </div>
